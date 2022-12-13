@@ -1,0 +1,285 @@
+[debug] [2022-12-13T10:46:15.260Z] ----------------------------------------------------------------------
+[debug] [2022-12-13T10:46:15.262Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\josh1\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2022-12-13T10:46:15.262Z] CLI Version:   11.18.0
+[debug] [2022-12-13T10:46:15.262Z] Platform:      win32
+[debug] [2022-12-13T10:46:15.262Z] Node Version:  v16.14.2
+[debug] [2022-12-13T10:46:15.263Z] Time:          Tue Dec 13 2022 21:46:15 GMT+1100 (Australian Eastern Daylight Time)
+[debug] [2022-12-13T10:46:15.263Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-12-13T10:46:15.325Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-12-13T10:46:15.326Z] > authorizing via signed-in user (o3ean15@gmail.com)
+[debug] [2022-12-13T10:46:15.326Z] [iam] checking project mba-copywriting-ai-assistant for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-12-13T10:46:15.328Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/mba-copywriting-ai-assistant:testIamPermissions [none]
+[debug] [2022-12-13T10:46:15.328Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/mba-copywriting-ai-assistant:testIamPermissions x-goog-quota-user=projects/mba-copywriting-ai-assistant
+[debug] [2022-12-13T10:46:15.328Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/mba-copywriting-ai-assistant:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-12-13T10:46:16.362Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/mba-copywriting-ai-assistant:testIamPermissions 200
+[debug] [2022-12-13T10:46:16.362Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/mba-copywriting-ai-assistant:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-12-13T10:46:16.363Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant [none]
+[debug] [2022-12-13T10:46:16.856Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant 200
+[debug] [2022-12-13T10:46:16.856Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant {"projectId":"mba-copywriting-ai-assistant","projectNumber":"605872592972","displayName":"MBA Copywriting AI Assistant","name":"projects/mba-copywriting-ai-assistant","resources":{"hostingSite":"mba-copywriting-ai-assistant"},"state":"ACTIVE","etag":"1_303ab893-53a4-44c8-a1ee-ab75c8828f75"}
+[debug] [2022-12-13T10:46:19.126Z] defaultcredentials: writing to file C:\Users\josh1\AppData\Roaming\firebase\o3ean15_gmail_com_application_default_credentials.json
+[debug] [2022-12-13T10:46:19.128Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant/sites pageToken=&pageSize=10
+[debug] [2022-12-13T10:46:20.518Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant/sites 200
+[debug] [2022-12-13T10:46:20.518Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant/sites {"sites":[{"name":"projects/mba-copywriting-ai-assistant/sites/mba-copywriting-ai-assistant","defaultUrl":"https://mba-copywriting-ai-assistant.web.app","appId":"1:605872592972:web:ebb6697f9bf3660b757ce9","type":"DEFAULT_SITE"}]}
+[debug] [2022-12-13T10:46:20.519Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:605872592972:web:ebb6697f9bf3660b757ce9/config [none]
+[debug] [2022-12-13T10:46:21.775Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:605872592972:web:ebb6697f9bf3660b757ce9/config 200
+[debug] [2022-12-13T10:46:21.775Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:605872592972:web:ebb6697f9bf3660b757ce9/config {"projectId":"mba-copywriting-ai-assistant","appId":"1:605872592972:web:ebb6697f9bf3660b757ce9","storageBucket":"mba-copywriting-ai-assistant.appspot.com","apiKey":"AIzaSyApt9kKapzthNMgfIMfIZYhdVfhzaQr5TA","authDomain":"mba-copywriting-ai-assistant.firebaseapp.com","messagingSenderId":"605872592972"}
+[info] 
+[info] === Deploying to 'mba-copywriting-ai-assistant'...
+[info] 
+[info] i  deploying functions, hosting 
+[debug] [2022-12-13T10:46:40.229Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant [none]
+[debug] [2022-12-13T10:46:40.703Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant 200
+[debug] [2022-12-13T10:46:40.703Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant {"projectId":"mba-copywriting-ai-assistant","projectNumber":"605872592972","displayName":"MBA Copywriting AI Assistant","name":"projects/mba-copywriting-ai-assistant","resources":{"hostingSite":"mba-copywriting-ai-assistant"},"state":"ACTIVE","etag":"1_303ab893-53a4-44c8-a1ee-ab75c8828f75"}
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2022-12-13T10:46:40.704Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mba-copywriting-ai-assistant/services/cloudfunctions.googleapis.com [none]
+[debug] [2022-12-13T10:46:40.705Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mba-copywriting-ai-assistant/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/mba-copywriting-ai-assistant
+[debug] [2022-12-13T10:46:40.705Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mba-copywriting-ai-assistant/services/runtimeconfig.googleapis.com [none]
+[debug] [2022-12-13T10:46:40.705Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mba-copywriting-ai-assistant/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/mba-copywriting-ai-assistant
+[debug] [2022-12-13T10:46:40.706Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mba-copywriting-ai-assistant/services/cloudbuild.googleapis.com [none]
+[debug] [2022-12-13T10:46:40.706Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mba-copywriting-ai-assistant/services/cloudbuild.googleapis.com x-goog-quota-user=projects/mba-copywriting-ai-assistant
+[debug] [2022-12-13T10:46:40.706Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mba-copywriting-ai-assistant/services/artifactregistry.googleapis.com [none]
+[debug] [2022-12-13T10:46:40.706Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mba-copywriting-ai-assistant/services/artifactregistry.googleapis.com x-goog-quota-user=projects/mba-copywriting-ai-assistant
+[debug] [2022-12-13T10:46:42.170Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mba-copywriting-ai-assistant/services/cloudfunctions.googleapis.com 200
+[debug] [2022-12-13T10:46:42.170Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mba-copywriting-ai-assistant/services/cloudfunctions.googleapis.com [omitted]
+[info] +  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2022-12-13T10:46:42.205Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mba-copywriting-ai-assistant/services/runtimeconfig.googleapis.com 200
+[debug] [2022-12-13T10:46:42.205Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mba-copywriting-ai-assistant/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2022-12-13T10:46:42.212Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mba-copywriting-ai-assistant/services/cloudbuild.googleapis.com 200
+[debug] [2022-12-13T10:46:42.212Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mba-copywriting-ai-assistant/services/cloudbuild.googleapis.com [omitted]
+[info] +  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2022-12-13T10:46:42.302Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mba-copywriting-ai-assistant/services/artifactregistry.googleapis.com 200
+[debug] [2022-12-13T10:46:42.302Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mba-copywriting-ai-assistant/services/artifactregistry.googleapis.com [omitted]
+[info] +  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2022-12-13T10:46:42.303Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant/adminSdkConfig [none]
+[debug] [2022-12-13T10:46:42.796Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant/adminSdkConfig 200
+[debug] [2022-12-13T10:46:42.796Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant/adminSdkConfig {"projectId":"mba-copywriting-ai-assistant","storageBucket":"mba-copywriting-ai-assistant.appspot.com"}
+[debug] [2022-12-13T10:46:42.797Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant/configs [none]
+[debug] [2022-12-13T10:46:43.382Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant/configs 200
+[debug] [2022-12-13T10:46:43.382Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant/configs {}
+[info] i  functions: preparing codebase firebase-frameworks-mba-copywriting-ai-assistant for deployment 
+[debug] [2022-12-13T10:46:43.384Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] !  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2022-12-13T10:46:45.714Z] > [functions] package.json contents: {
+  "name": "mba-copywriting-assistant",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "firebase": "^9.15.0",
+    "firebase-functions": "^3.23.0",
+    "next": "^12.1.6",
+    "openai": "^3.0.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "firebase-frameworks": "^0.6.0",
+    "firebase-admin": "^11.0.1"
+  },
+  "main": "server.js",
+  "engines": {
+    "node": "16"
+  }
+}
+[debug] [2022-12-13T10:46:45.714Z] Building nodejs source
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2022-12-13T10:46:45.716Z] Found functions.yaml. Got spec: {
+  "endpoints": {
+    "ssrmbacopywritingaiassistant": {
+      "platform": "gcfv2",
+      "region": [
+        "us-central1"
+      ],
+      "labels": {},
+      "httpsTrigger": {},
+      "entryPoint": "ssr"
+    }
+  },
+  "specVersion": "v1alpha1",
+  "requiredAPIs": []
+}
+[info] i  functions: preparing .firebase\mba-copywriting-ai-assistant\functions directory for uploading... 
+[info] i  functions: packaged C:\Users\josh1\Documents\VSCode Projects\OpenAI API\MBA Copywriting Assistant\.firebase\mba-copywriting-ai-assistant\functions (10.42 MB) for uploading 
+[debug] [2022-12-13T10:46:46.395Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/mba-copywriting-ai-assistant/locations/-/functions [none]
+[debug] [2022-12-13T10:46:47.237Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/mba-copywriting-ai-assistant/locations/-/functions 200
+[debug] [2022-12-13T10:46:47.237Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/mba-copywriting-ai-assistant/locations/-/functions {}
+[debug] [2022-12-13T10:46:47.238Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/mba-copywriting-ai-assistant/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2022-12-13T10:46:49.059Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/mba-copywriting-ai-assistant/locations/-/functions 200
+[debug] [2022-12-13T10:46:49.059Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/mba-copywriting-ai-assistant/locations/-/functions {"functions":[{"name":"projects/mba-copywriting-ai-assistant/locations/us-central1/functions/ssrmbacopywritingaiassistant","buildConfig":{"runtime":"nodejs16","entryPoint":"ssr","source":{"storageSource":{"bucket":"gcf-v2-sources-605872592972-us-central1","object":"ssrmbacopywritingaiassistant/function-source.zip"}},"sourceProvenance":{}},"state":"FAILED","updateTime":"2022-12-13T09:56:05.417135580Z","labels":{"deployment-tool":"cli-firebase","firebase-functions-codebase":"firebase-frameworks-mba-copywriting-ai-assistant","firebase-functions-hash":"e422f0c1aed92912c195bf49a647d87cb1374ed3"},"stateMessages":[{"severity":"ERROR","type":"CloudRunServiceNotFound","message":"Cloud Run service projects/mba-copywriting-ai-assistant/locations/us-central1/services/ssrmbacopywritingaiassistant for the function was not found. The function will not work correctly. Please redeploy."}],"environment":"GEN_2"}]}
+[debug] [2022-12-13T10:46:49.293Z] TypeError: Cannot read properties of undefined (reading 'service')
+    at C:\Users\josh1\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\backend.js:198:113
+    at Array.map (<anonymous>)
+    at loadExistingBackend (C:\Users\josh1\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\backend.js:198:69)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async Object.existingBackend (C:\Users\josh1\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\backend.js:174:9)
+    at async prepare (C:\Users\josh1\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\prepare.js:151:115)
+    at async chain (C:\Users\josh1\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\index.js:35:9)
+    at async deploy (C:\Users\josh1\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\index.js:79:5)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2022-12-13T10:55:01.633Z] ----------------------------------------------------------------------
+[debug] [2022-12-13T10:55:01.635Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\josh1\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2022-12-13T10:55:01.636Z] CLI Version:   11.18.0
+[debug] [2022-12-13T10:55:01.636Z] Platform:      win32
+[debug] [2022-12-13T10:55:01.636Z] Node Version:  v16.14.2
+[debug] [2022-12-13T10:55:01.637Z] Time:          Tue Dec 13 2022 21:55:01 GMT+1100 (Australian Eastern Daylight Time)
+[debug] [2022-12-13T10:55:01.637Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-12-13T10:55:01.698Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-12-13T10:55:01.699Z] > authorizing via signed-in user (o3ean15@gmail.com)
+[debug] [2022-12-13T10:55:01.699Z] [iam] checking project mba-copywriting-ai-assistant for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-12-13T10:55:01.701Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/mba-copywriting-ai-assistant:testIamPermissions [none]
+[debug] [2022-12-13T10:55:01.701Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/mba-copywriting-ai-assistant:testIamPermissions x-goog-quota-user=projects/mba-copywriting-ai-assistant
+[debug] [2022-12-13T10:55:01.701Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/mba-copywriting-ai-assistant:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-12-13T10:55:02.737Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/mba-copywriting-ai-assistant:testIamPermissions 200
+[debug] [2022-12-13T10:55:02.737Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/mba-copywriting-ai-assistant:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-12-13T10:55:02.738Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant [none]
+[debug] [2022-12-13T10:55:03.351Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant 200
+[debug] [2022-12-13T10:55:03.351Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant {"projectId":"mba-copywriting-ai-assistant","projectNumber":"605872592972","displayName":"MBA Copywriting AI Assistant","name":"projects/mba-copywriting-ai-assistant","resources":{"hostingSite":"mba-copywriting-ai-assistant"},"state":"ACTIVE","etag":"1_303ab893-53a4-44c8-a1ee-ab75c8828f75"}
+[debug] [2022-12-13T10:55:05.678Z] defaultcredentials: writing to file C:\Users\josh1\AppData\Roaming\firebase\o3ean15_gmail_com_application_default_credentials.json
+[debug] [2022-12-13T10:55:05.680Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant/sites pageToken=&pageSize=10
+[debug] [2022-12-13T10:55:07.076Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant/sites 200
+[debug] [2022-12-13T10:55:07.076Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant/sites {"sites":[{"name":"projects/mba-copywriting-ai-assistant/sites/mba-copywriting-ai-assistant","defaultUrl":"https://mba-copywriting-ai-assistant.web.app","appId":"1:605872592972:web:ebb6697f9bf3660b757ce9","type":"DEFAULT_SITE"}]}
+[debug] [2022-12-13T10:55:07.076Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:605872592972:web:ebb6697f9bf3660b757ce9/config [none]
+[debug] [2022-12-13T10:55:08.416Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:605872592972:web:ebb6697f9bf3660b757ce9/config 200
+[debug] [2022-12-13T10:55:08.416Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:605872592972:web:ebb6697f9bf3660b757ce9/config {"projectId":"mba-copywriting-ai-assistant","appId":"1:605872592972:web:ebb6697f9bf3660b757ce9","storageBucket":"mba-copywriting-ai-assistant.appspot.com","apiKey":"AIzaSyApt9kKapzthNMgfIMfIZYhdVfhzaQr5TA","authDomain":"mba-copywriting-ai-assistant.firebaseapp.com","messagingSenderId":"605872592972"}
+[info] 
+[info] === Deploying to 'mba-copywriting-ai-assistant'...
+[info] 
+[info] i  deploying functions, hosting 
+[debug] [2022-12-13T10:55:20.146Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant [none]
+[debug] [2022-12-13T10:55:20.617Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant 200
+[debug] [2022-12-13T10:55:20.617Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant {"projectId":"mba-copywriting-ai-assistant","projectNumber":"605872592972","displayName":"MBA Copywriting AI Assistant","name":"projects/mba-copywriting-ai-assistant","resources":{"hostingSite":"mba-copywriting-ai-assistant"},"state":"ACTIVE","etag":"1_303ab893-53a4-44c8-a1ee-ab75c8828f75"}
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2022-12-13T10:55:20.619Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mba-copywriting-ai-assistant/services/cloudfunctions.googleapis.com [none]
+[debug] [2022-12-13T10:55:20.619Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mba-copywriting-ai-assistant/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/mba-copywriting-ai-assistant
+[debug] [2022-12-13T10:55:20.619Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mba-copywriting-ai-assistant/services/runtimeconfig.googleapis.com [none]
+[debug] [2022-12-13T10:55:20.620Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mba-copywriting-ai-assistant/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/mba-copywriting-ai-assistant
+[debug] [2022-12-13T10:55:20.620Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mba-copywriting-ai-assistant/services/cloudbuild.googleapis.com [none]
+[debug] [2022-12-13T10:55:20.620Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mba-copywriting-ai-assistant/services/cloudbuild.googleapis.com x-goog-quota-user=projects/mba-copywriting-ai-assistant
+[debug] [2022-12-13T10:55:20.621Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mba-copywriting-ai-assistant/services/artifactregistry.googleapis.com [none]
+[debug] [2022-12-13T10:55:20.621Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mba-copywriting-ai-assistant/services/artifactregistry.googleapis.com x-goog-quota-user=projects/mba-copywriting-ai-assistant
+[debug] [2022-12-13T10:55:22.069Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mba-copywriting-ai-assistant/services/cloudbuild.googleapis.com 200
+[debug] [2022-12-13T10:55:22.069Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mba-copywriting-ai-assistant/services/cloudbuild.googleapis.com [omitted]
+[info] +  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2022-12-13T10:55:22.105Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mba-copywriting-ai-assistant/services/artifactregistry.googleapis.com 200
+[debug] [2022-12-13T10:55:22.105Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mba-copywriting-ai-assistant/services/artifactregistry.googleapis.com [omitted]
+[info] +  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2022-12-13T10:55:22.112Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mba-copywriting-ai-assistant/services/cloudfunctions.googleapis.com 200
+[debug] [2022-12-13T10:55:22.112Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mba-copywriting-ai-assistant/services/cloudfunctions.googleapis.com [omitted]
+[info] +  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2022-12-13T10:55:22.113Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mba-copywriting-ai-assistant/services/runtimeconfig.googleapis.com 200
+[debug] [2022-12-13T10:55:22.113Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mba-copywriting-ai-assistant/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2022-12-13T10:55:22.113Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant/adminSdkConfig [none]
+[debug] [2022-12-13T10:55:22.637Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant/adminSdkConfig 200
+[debug] [2022-12-13T10:55:22.637Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant/adminSdkConfig {"projectId":"mba-copywriting-ai-assistant","storageBucket":"mba-copywriting-ai-assistant.appspot.com"}
+[debug] [2022-12-13T10:55:22.638Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant/configs [none]
+[debug] [2022-12-13T10:55:23.225Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant/configs 200
+[debug] [2022-12-13T10:55:23.225Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant/configs {}
+[info] i  functions: preparing codebase firebase-frameworks-mba-copywriting-ai-assistant for deployment 
+[debug] [2022-12-13T10:55:23.227Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] !  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2022-12-13T10:55:26.099Z] > [functions] package.json contents: {
+  "name": "mba-copywriting-assistant",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "firebase": "^9.15.0",
+    "firebase-functions": "^3.23.0",
+    "next": "^12.1.6",
+    "openai": "^3.0.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "firebase-frameworks": "^0.6.0",
+    "firebase-admin": "^11.0.1"
+  },
+  "main": "server.js",
+  "engines": {
+    "node": "16"
+  }
+}
+[debug] [2022-12-13T10:55:26.099Z] Building nodejs source
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2022-12-13T10:55:26.101Z] Found functions.yaml. Got spec: {
+  "endpoints": {
+    "ssrmbacopywritingaiassistant": {
+      "platform": "gcfv2",
+      "region": [
+        "us-central1"
+      ],
+      "labels": {},
+      "httpsTrigger": {},
+      "entryPoint": "ssr"
+    }
+  },
+  "specVersion": "v1alpha1",
+  "requiredAPIs": []
+}
+[info] i  functions: preparing .firebase\mba-copywriting-ai-assistant\functions directory for uploading... 
+[info] i  functions: packaged C:\Users\josh1\Documents\VSCode Projects\OpenAI API\MBA Copywriting Assistant\.firebase\mba-copywriting-ai-assistant\functions (10.42 MB) for uploading 
+[debug] [2022-12-13T10:55:26.825Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/mba-copywriting-ai-assistant/locations/-/functions [none]
+[debug] [2022-12-13T10:55:27.708Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/mba-copywriting-ai-assistant/locations/-/functions 200
+[debug] [2022-12-13T10:55:27.708Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/mba-copywriting-ai-assistant/locations/-/functions {}
+[debug] [2022-12-13T10:55:27.709Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/mba-copywriting-ai-assistant/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2022-12-13T10:55:29.467Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/mba-copywriting-ai-assistant/locations/-/functions 200
+[debug] [2022-12-13T10:55:29.467Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/mba-copywriting-ai-assistant/locations/-/functions {"functions":[{"name":"projects/mba-copywriting-ai-assistant/locations/us-central1/functions/ssrmbacopywritingaiassistant","buildConfig":{"runtime":"nodejs16","entryPoint":"ssr","source":{"storageSource":{"bucket":"gcf-v2-sources-605872592972-us-central1","object":"ssrmbacopywritingaiassistant/function-source.zip"}},"sourceProvenance":{}},"state":"FAILED","updateTime":"2022-12-13T09:56:05.417135580Z","labels":{"deployment-tool":"cli-firebase","firebase-functions-codebase":"firebase-frameworks-mba-copywriting-ai-assistant","firebase-functions-hash":"e422f0c1aed92912c195bf49a647d87cb1374ed3"},"stateMessages":[{"severity":"ERROR","type":"CloudRunServiceNotFound","message":"Cloud Run service projects/mba-copywriting-ai-assistant/locations/us-central1/services/ssrmbacopywritingaiassistant for the function was not found. The function will not work correctly. Please redeploy."}],"environment":"GEN_2"}]}
+[debug] [2022-12-13T10:55:29.705Z] TypeError: Cannot read properties of undefined (reading 'service')
+    at C:\Users\josh1\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\backend.js:198:113
+    at Array.map (<anonymous>)
+    at loadExistingBackend (C:\Users\josh1\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\backend.js:198:69)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async Object.existingBackend (C:\Users\josh1\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\backend.js:174:9)
+    at async prepare (C:\Users\josh1\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\prepare.js:151:115)
+    at async chain (C:\Users\josh1\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\index.js:35:9)
+    at async deploy (C:\Users\josh1\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\index.js:79:5)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2022-12-13T10:56:18.384Z] ----------------------------------------------------------------------
+[debug] [2022-12-13T10:56:18.386Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\josh1\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2022-12-13T10:56:18.387Z] CLI Version:   11.18.0
+[debug] [2022-12-13T10:56:18.387Z] Platform:      win32
+[debug] [2022-12-13T10:56:18.387Z] Node Version:  v16.14.2
+[debug] [2022-12-13T10:56:18.388Z] Time:          Tue Dec 13 2022 21:56:18 GMT+1100 (Australian Eastern Daylight Time)
+[debug] [2022-12-13T10:56:18.388Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-12-13T10:56:18.449Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-12-13T10:56:18.449Z] > authorizing via signed-in user (o3ean15@gmail.com)
+[debug] [2022-12-13T10:56:18.449Z] [iam] checking project mba-copywriting-ai-assistant for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-12-13T10:56:18.451Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/mba-copywriting-ai-assistant:testIamPermissions [none]
+[debug] [2022-12-13T10:56:18.451Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/mba-copywriting-ai-assistant:testIamPermissions x-goog-quota-user=projects/mba-copywriting-ai-assistant
+[debug] [2022-12-13T10:56:18.452Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/mba-copywriting-ai-assistant:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-12-13T10:56:19.474Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/mba-copywriting-ai-assistant:testIamPermissions 200
+[debug] [2022-12-13T10:56:19.474Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/mba-copywriting-ai-assistant:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-12-13T10:56:19.475Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant [none]
+[debug] [2022-12-13T10:56:19.954Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant 200
+[debug] [2022-12-13T10:56:19.954Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant {"projectId":"mba-copywriting-ai-assistant","projectNumber":"605872592972","displayName":"MBA Copywriting AI Assistant","name":"projects/mba-copywriting-ai-assistant","resources":{"hostingSite":"mba-copywriting-ai-assistant"},"state":"ACTIVE","etag":"1_303ab893-53a4-44c8-a1ee-ab75c8828f75"}
+[debug] [2022-12-13T10:56:22.209Z] defaultcredentials: writing to file C:\Users\josh1\AppData\Roaming\firebase\o3ean15_gmail_com_application_default_credentials.json
+[debug] [2022-12-13T10:56:22.210Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant/sites pageToken=&pageSize=10
+[debug] [2022-12-13T10:56:23.486Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant/sites 200
+[debug] [2022-12-13T10:56:23.486Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/mba-copywriting-ai-assistant/sites {"sites":[{"name":"projects/mba-copywriting-ai-assistant/sites/mba-copywriting-ai-assistant","defaultUrl":"https://mba-copywriting-ai-assistant.web.app","appId":"1:605872592972:web:ebb6697f9bf3660b757ce9","type":"DEFAULT_SITE"}]}
+[debug] [2022-12-13T10:56:23.486Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:605872592972:web:ebb6697f9bf3660b757ce9/config [none]
+[debug] [2022-12-13T10:56:24.752Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:605872592972:web:ebb6697f9bf3660b757ce9/config 200
+[debug] [2022-12-13T10:56:24.752Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:605872592972:web:ebb6697f9bf3660b757ce9/config {"projectId":"mba-copywriting-ai-assistant","appId":"1:605872592972:web:ebb6697f9bf3660b757ce9","storageBucket":"mba-copywriting-ai-assistant.appspot.com","apiKey":"AIzaSyApt9kKapzthNMgfIMfIZYhdVfhzaQr5TA","authDomain":"mba-copywriting-ai-assistant.firebaseapp.com","messagingSenderId":"605872592972"}
+[debug] [2022-12-13T10:56:37.436Z] Error: Command failed: npm.cmd i --omit dev --no-audit
+    at checkExecSyncError (node:child_process:828:11)
+    at execSync (node:child_process:902:15)
+    at prepareFrameworks (C:\Users\josh1\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\index.js:329:42)
+    at async deploy (C:\Users\josh1\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\index.js:53:13)
+[error] 
+[error] Error: An unexpected error has occurred.
