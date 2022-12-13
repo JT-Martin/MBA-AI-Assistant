@@ -18,7 +18,7 @@ export default async function (req, res) {
 
 function generatePrompt(audience, service, offer) {
   return `
-  Write 15 paragraphs of Facebook ad copy designed to sell a ${service} service.
+  Write 10 paragraphs of Facebook ad copy designed to sell a ${service} service.
   Do not label the paragraphs by number. 
   Talk about common problems people have if they're not using a ${service} service and try to minimize the amount of times you mention ${service}.
   Write it at a 4th grade level. 
