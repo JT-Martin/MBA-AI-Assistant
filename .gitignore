@@ -35,5 +35,3 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 .env.example
-firebase-debug.log
-firebase.json
