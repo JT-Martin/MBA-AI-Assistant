@@ -1,18 +1,27 @@
 {
-  "name": "mba-copywriting-assistant",
+  "name": "mba-ai-assistant",
+  "main": "server.js",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "out": "next build && next export",
+    "deploy2": "firebase deploy --only functions,hosting",
+    "deploy": "firebase deploy --only hosting",
     "start": "next start"
   },
   "dependencies": {
     "firebase": "^9.15.0",
-    "firebase-functions": "^3.24.1",
+    "firebase-admin": "^11.4.0",
+    "firebase-functions": "^4.2.1",
     "next": "^12.1.6",
     "openai": "^3.0.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-select": "^5.7.0"
+  },
+  "devDependencies": {
+    "sass": "^1.57.0"
   }
 }
