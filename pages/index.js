@@ -7,6 +7,26 @@ export default function Home() {
   const [result, setResult] = useState();
   const [loadingState, setLoadingState] = useState(false);
 
+  
+  
+//   async function* readChunks(stream) {
+//     const reader = stream.getReader();
+//     try {
+//         while (true) {
+//             const { done, value } = await reader.read();
+//             if (done) {
+//                 break;
+//             }
+//             // value is a Uint8Array
+//             const chunk = new TextDecoder().decode(value);
+//             console.log(JSON.parse(chunk))
+//             yield JSON.parse(chunk);
+//         }
+//     } finally {
+//         reader.releaseLock();
+//     }
+// }
+  
   async function onSubmit(event) {
     event.preventDefault();
     if(loadingState === true) {
@@ -23,10 +43,28 @@ export default function Home() {
          input: input,
         }),
     });
-    const data = await response.json();
-    console.log(data)
-    setResult(data.result.choices[0].message.content.trim())
-    setLoadingState(false)
+    // New Streaming Code
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+
+    // This data is a ReadableStream
+    const data = response.body;
+    if (!data) {
+      return;
+    }
+
+    const reader = data.getReader();
+    const decoder = new TextDecoder();
+    let done = false;
+
+    while (!done) {
+      const { value, done: doneReading } = await reader.read();
+      done = doneReading;
+      const chunkValue = decoder.decode(value);
+      setResult((prev) => prev + chunkValue);
+    }
+    setLoading(false);
   }
 
   function ExplainerVideoButton() {
