@@ -6,11 +6,10 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 export default async function (req, res) {
-  const completion = await openai.createCompletion({
-    model: "text-davinci-003",
-    prompt: generatePrompt(req.body.input),
-    temperature: 0.6,
-    max_tokens: 2048
+  const completion = await openai.createChatCompletion({
+    model: "gpt-3.5-turbo",
+    messages: [{role: "user", content: generatePrompt(req.body.input)}],
+    temperature: 0.6
   });
   //res.status(200).json({ result: completion.data.choices[0].text });
   res.status(200).json({ result: completion.data });
