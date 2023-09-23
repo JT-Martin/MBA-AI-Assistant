@@ -12,18 +12,18 @@
     "start": "next start"
   },
   "dependencies": {
-    "eventsource-parser": "^1.0.0",
+    "ai": "^2.2.13",
     "firebase": "^9.15.0",
     "firebase-admin": "^11.4.0",
     "firebase-functions": "^4.2.1",
     "next": "^12.1.6",
-    "openai": "^3.2.1",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-select": "^5.7.0"
+    "openai": "^3.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-select": "^5.7.5"
   },
   "devDependencies": {
     "sass": "^1.57.0",
-    "typescript": "^5.0.4"
+    "typescript": "5.2.2"
   }
 }

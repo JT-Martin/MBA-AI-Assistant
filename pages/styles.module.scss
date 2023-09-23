@@ -85,6 +85,12 @@
             width: 100%;
             text-align: center;
             gap: 24px;
+
+            .buttonContainer {
+              display: flex;
+              justify-content: space-between;
+              gap: 5%;
+            }
         }
         
         @media only screen and (max-width: 837px)  {
@@ -287,13 +293,46 @@
   &.cheatsheetButton {
     background-color: hsl(0, 0%, 69%);
     color: #000;
+    font-size: 32px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100%;
 
     &:after {
       background-image: url('../public/resize.png');
       background-size: cover;
       display: inline-block;
-      width: 25px;
-      height: 25px;
+      width: 20px;
+      height: 20px;
+      margin-left: 10px;
+      content: "";
+      top: 0;
+      right: 0;
+    }
+
+    &:hover {
+      background-color: hsl(0, 0%, 60%);  
+    }
+  }
+
+  &.copyButton {
+    background-color: hsl(0, 0%, 69%);
+    color: #000;
+    font-size: 20px;
+    padding-top: 37.2px;
+    padding-bottom: 37.2px;
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100%;
+
+    &:after {
+      background-image: url('../public/copy.png');
+      background-size: cover;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
       margin-left: 10px;
       content: "";
       top: 0;
@@ -346,6 +385,8 @@
       transform: translateY(5px);
     }
 }
+
+
 
 .recipes {
   max-width: 800px;

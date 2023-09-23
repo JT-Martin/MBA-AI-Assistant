@@ -35,36 +35,18 @@ export default function Home() {
     }
     setLoadingState(true)
     const response = await fetch("/api/generate", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-         input: input,
-        }),
-    });
-    // New Streaming Code
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
-
-    // This data is a ReadableStream
-    const data = response.body;
-    if (!data) {
-      return;
-    }
-
-    const reader = data.getReader();
-    const decoder = new TextDecoder();
-    let done = false;
-
-    while (!done) {
-      const { value, done: doneReading } = await reader.read();
-      done = doneReading;
-      const chunkValue = decoder.decode(value);
-      setResult((prev) => prev + chunkValue);
-    }
-    setLoading(false);
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+           input: input,
+          }),
+      });
+    const data = await response.json();
+    console.log(data)
+    setResult(data.result.choices[0].message.content.trim())
+    setLoadingState(false);
   }
 
   function ExplainerVideoButton() {
@@ -84,6 +66,10 @@ export default function Home() {
     return <a id="cheatsheet-button" className={`${styles.button} ${styles.cheatsheetButton}`} target="_blank" href="https://docs.google.com/document/d/1PrMT_zrB6UF8v_2CzW8f_sVkKUlaltBD9-tl6enDO38/edit?usp=sharing">Ai Cheatsheet</a>
   }
 
+  // function CopyButton() {
+  //   return <a id="copy-button" className={`${styles.button} ${styles.copyButton}`} onClick={copyResponse} >Copy Response</a>
+  // }
+
   function RecipeButton(props) {
     return <button className={`${styles.button} ${styles.recipeButton}`} onClick={addRecipe} value={props.prompt}>{props.buttonText}</button>
   }
@@ -92,6 +78,16 @@ export default function Home() {
     e.preventDefault();
     setInput(e.target.value);
   }
+
+  // function copyResponse(e) {
+  //   e.preventDefault();
+  //   let button = document.getElementById("copy-button")
+  //   navigator.clipboard.writeText(result);
+  //   button.innerHTML = "Copied!"
+  //   setTimeout(() => {
+  //          button.innerHTML = "Copy Response"
+  //        }, "3000")
+  // }
 
   // async function copy() {
   //   let textareaElement = document.getElementById("result");
@@ -185,7 +181,10 @@ export default function Home() {
               </div> */}
               
             </div>
-            <CheatsheetButton/>
+            <div className={styles.buttonContainer}>
+              {/* <CopyButton/> */}
+              <CheatsheetButton/>
+            </div>
           </div>
         </div>
         
@@ -263,7 +262,16 @@ export default function Home() {
             <div className={styles.recipeItem}>
               <RecipeButton 
                 buttonText="Provide Feedback" 
-                prompt={`You're acting as an expert copywriting and marketing coach. Critique the following copy in terms of its effectiveness and likelihood to convert. Look for improved ways of saying things to be simpler, less passive, and more compelling for the reader. Have a direct-response leaning bias:
+                prompt={`You're acting as an expert copywriting and direct response marketing coach who is reviewing a piece of written marketing.
+                \nYour job is to review and critique the copy in terms of its effectiveness and likelihood to get results. You will supply a detailed breakdown with suggested improvements.
+                \nYou will draw on industry best practice to inform your critique and suggest ways of saying things to be simpler, less passive, and more compelling for the reader. Draw on inspiration from great direct response marketers like Frank Kern when providing feedback or suggested changes.
+                \nKey considerations when reviewing copy involve:
+                \nContent Quality: Regardless of length or structure, good ad copy should be relevant, engaging, simple to understand and persuasive. Check for spammy or redundant phrases that would reduce the quality of the copy or for things that could be said in a simpler way.
+                \nCall to Action (CTA): Good ad copy often includes a strong CTA, urging the audience to take a specific action. Assess the strength and clarity of the CTAs.
+                \nCreativity and Uniqueness: High-performing ad copy often stands out from the crowd. Assess the uniqueness of the copy. Evaluate the creative aspects of the copy, such as unexpected twists, humor, or emotive language.
+                \nGrammar and Style: Although the focus is not solely on traditional writing, basic grammar and style rules should still be respected for clarity and professionalism.
+                \nConformity to Best Practices: While acknowledging that unconventional copy can be effective, you should still recognize industry-standard best practices for comparison.
+                \nProvide a critique of the following copy and suggest at least 3 action items to make improvements:
                 \n[INSERT COPY]
                 `}/>
               <h4>Provides critique on any written copy</h4>
@@ -283,12 +291,20 @@ export default function Home() {
             </div>
             <div className={styles.recipeItem}>
               <RecipeButton 
-                buttonText="Rewrite New Angle" 
-                prompt={`You're acting as an expert direct response copywriting and marketing coach. Rewrite this copy to be more effective, sensational and compelling. 
-                \nUse simple but impactful and emotionally driven language in a similar style to direct response copywriters such as Frank Kern:
+                buttonText="Enhance Copy" 
+                prompt={`You're acting as an expert copywriter and direct response marketing consultant who is re-writing a piece of written marketing for a client to make it more effective.
+                \nYour job is to rewrite the copy to improve its effectiveness and likelihood to get leads for the client. You will supply an alternative version that is similar to the original but enhanced based on your expert advice.
+                \nYou will draw on industry best practice to make the copy simpler, less passive, and more compelling for the reader. You will draw on inspiration from great direct response marketers like Frank Kern when making changes.
+                \nKey considerations when re-writing the copy involve:
+                \nContent Quality: Regardless of length or structure, good ad copy should be relevant, engaging, simple to understand and persuasive. Check for spammy or redundant phrases that would reduce the quality of the copy or for things that could be said in a simpler way.
+                \nCall to Action (CTA): Good ad copy often includes a strong CTA, urging the audience to take a specific action. Assess the strength and clarity of the CTAs and if they are not present, add them.
+                \nCreativity and Uniqueness: High-performing ad copy often stands out from the crowd. Look for ways to enhance the uniqueness of the copy such as unexpected twists, humor, use of similes or emotive language.
+                \nGrammar and Style: Although the focus is not solely on traditional writing, basic grammar rules should still be respected for clarity and professionalism.
+                \nConformity to Best Practices: While acknowledging that unconventional copy can be effective, you should still recognise industry-standard best practices for comparison.
+                \nProvide an alternative version of the following copy and a detailed explanation of why the changes were made:
                 \n[INSERT COPY]
                 `}/>
-              <h4>Rewrites any written copy into new angles</h4>
+              <h4>Enhances your copy by reviewing it.</h4>
             </div>
             <div className={styles.recipeItem}>
               <RecipeButton 
