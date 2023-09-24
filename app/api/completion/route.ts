@@ -19,7 +19,14 @@ export const runtime = 'edge';
 //   }));
 // }
 
-function buildPrompt(prompt: string) {
+// Define a type for message objects
+type Message = {
+  role: 'system' | 'user' | 'assistant'; // Adjust role types as needed
+  content: string;
+};
+
+// Function to build the prompt message
+function buildPrompt(prompt: string): Message[] {
   return [
     {
       role: 'user',
@@ -31,7 +38,7 @@ function buildPrompt(prompt: string) {
 
 export async function POST(req: Request) {
     const { prompt } = await req.json();
-
+    
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       stream: true,
