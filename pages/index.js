@@ -1,3 +1,5 @@
+'use client'
+
 import Head from "next/head";
 import { useState, useMemo, useEffect } from "react";
 import { useCompletion } from 'ai/react';
