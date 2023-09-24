@@ -6,7 +6,7 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-export const runtime = 'edge';
+
 
 // function buildPrompt(prompt: string) {
 //   console.log(prompt.split('\n').map((message) => ({
