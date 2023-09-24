@@ -1,108 +1,56 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { useCompletion } from 'ai/react';
 import styles from "./styles.module.scss";
 
+
 export default function Home() {
-  const [input, setInput] = useState();
-  const [result, setResult] = useState();
   const [loadingState, setLoadingState] = useState(false);
-
-  
-  
-//   async function* readChunks(stream) {
-//     const reader = stream.getReader();
-//     try {
-//         while (true) {
-//             const { done, value } = await reader.read();
-//             if (done) {
-//                 break;
-//             }
-//             // value is a Uint8Array
-//             const chunk = new TextDecoder().decode(value);
-//             console.log(JSON.parse(chunk))
-//             yield JSON.parse(chunk);
-//         }
-//     } finally {
-//         reader.releaseLock();
-//     }
-// }
-  
-  async function onSubmit(event) {
-    event.preventDefault();
-    if(loadingState === true) {
-      console.log("ignored click")
-      return;
-    }
-    setLoadingState(true)
-    const response = await fetch("/api/generate", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-           input: input,
-          }),
-      });
-    const data = await response.json();
-    console.log(data)
-    setResult(data.result.choices[0].message.content.trim())
+  const {complete, completion, input, setInput, handleInputChange, stop} = useCompletion({api: "/api/completion", 
+  onFinish: () => {
+    console.log(`Response: ${completion}`)
     setLoadingState(false);
-  }
+  }, 
+  onError: () => {
+    setLoadingState(false);
+  }});
+  
+  useEffect(() => {
+    const responseTextarea = document.getElementById('result');
+    if (responseTextarea) {
+      responseTextarea.scrollTop = responseTextarea.scrollHeight;
+    }
+  }, [completion]); // Trigger the effect whenever 'completion' changes
 
+  function handleSubmitButtonClick(event) {
+    event.preventDefault();
+    if(!loadingState) {
+      setLoadingState(true);
+      complete(input);
+    }
+    else {
+      stop();
+      setLoadingState(false);
+    }
+  }
+  
+  
   function ExplainerVideoButton() {
     return <a id="explainer-video-button" className={`${styles.button} ${styles.explainerVideoButton}`} target="_blank" href="https://learn.mbatraining.com.au/products/0342156b-44f7-4b3b-921e-824608b58d2e/categories/6f9bfd7c-bc14-4c9f-bc4b-fa8bf4ad0181/posts/494c8b2b-1e68-47ee-bf33-2e763304f36e">Watch Explainer Video</a>
   }
   
-  function SubmitButton() {
-    if(loadingState === false) {
-      return <button type="submit" id="submit-button" className={styles.button} >Ask Ai Assistant</button>
-    }
-    else if(loadingState === true) {
-      return <button type="submit" id="submit-button" className={`${styles.button} ${styles.loading}`}>Thinking</button>
-    }
-  }
+
 
   function CheatsheetButton() {
     return <a id="cheatsheet-button" className={`${styles.button} ${styles.cheatsheetButton}`} target="_blank" href="https://docs.google.com/document/d/1PrMT_zrB6UF8v_2CzW8f_sVkKUlaltBD9-tl6enDO38/edit?usp=sharing">Ai Cheatsheet</a>
   }
 
-  // function CopyButton() {
-  //   return <a id="copy-button" className={`${styles.button} ${styles.copyButton}`} onClick={copyResponse} >Copy Response</a>
-  // }
 
   function RecipeButton(props) {
-    return <button className={`${styles.button} ${styles.recipeButton}`} onClick={addRecipe} value={props.prompt}>{props.buttonText}</button>
+    return <button className={`${styles.button} ${styles.recipeButton}`} onClick={() => {setInput(props.prompt)}} value={props.prompt}>{props.buttonText}</button>
   }
 
-  function addRecipe(e) {
-    e.preventDefault();
-    setInput(e.target.value);
-  }
-
-  // function copyResponse(e) {
-  //   e.preventDefault();
-  //   let button = document.getElementById("copy-button")
-  //   navigator.clipboard.writeText(result);
-  //   button.innerHTML = "Copied!"
-  //   setTimeout(() => {
-  //          button.innerHTML = "Copy Response"
-  //        }, "3000")
-  // }
-
-  // async function copy() {
-  //   let textareaElement = document.getElementById("result");
-  //   let button = document.getElementById("copy-button")
-  //   // Select the text inside the textarea
-  //   //textareaElement.select();
-
-  //   // Copy the text to the clipboard
-  //   await navigator.clipboard.writeText(textareaElement.value);
-
-  //   button.innerHTML = "Copied!"
-  //   setTimeout(() => {
-  //     button.innerHTML = "Copy This Text"
-  //   }, "5000")
-  //}
+ 
 
   return (
     <div className={styles.all}>
@@ -115,7 +63,6 @@ export default function Home() {
         <link href="https://fonts.googleapis.com/css2?family=Viga&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Passion+One&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Blinker&display=swap" rel="stylesheet" />
-
       </Head>
       <header className={styles.header}>
         <h3>MEET YOUR ARTIFICIAL INTELLIGENCE ASSISTANT</h3>
@@ -127,7 +74,7 @@ export default function Home() {
           <source src="https://player.vimeo.com/progressive_redirect/playback/781795783/rendition/540p/file.mp4?loc=external&signature=9da22a11712585ca4080f35dea5521544ce358a0a5155ef2d11fd0a3ebf85af8" type="video/mp4"/>
         </video>
         <div className={styles.grid}>
-          <form onSubmit={onSubmit} className={styles.input}>
+          <form className={styles.input}>
             <div>
               <h3>Human</h3>
               <h4>Input a detailed question, request or recipe and the Ai Assistant will respond to help.</h4>
@@ -142,11 +89,19 @@ export default function Home() {
 
                   You can ask it to adapt it's responses by copying them and pasting them here with new instructions.`}
                   value={input}
-                  onChange={(e) => setInput(e.target.value)}
+                  onChange={handleInputChange}
                 />
               </div>
             </div>
-            <SubmitButton/>
+            {loadingState ? (
+              <button type="button" id="submit-button" onClick={handleSubmitButtonClick} className={`${styles.button} ${styles.loading}`}>
+                Thinking
+              </button>
+            ) : (
+              <button type="submit" id="submit-button" className={styles.button} onClick={handleSubmitButtonClick}>
+                Ask Ai Assistant
+              </button>
+            )}
           </form>
           <div className={styles.output}>
             <div>
@@ -167,22 +122,11 @@ export default function Home() {
                     I am designed to be a smart tool to give you ideas, accelerate your work and help you with research.
 
                     I am not a replacement for human intelligence.`}
-                    value={result}
+                    value={completion}
                 />
               </div>
-              {/* <div className={styles.revisionWrapper}>
-                <textarea
-                  type="text"
-                  rows={5}
-                  name="revisions"
-                  id="revisions"
-                  className
-                />
-              </div> */}
-              
             </div>
             <div className={styles.buttonContainer}>
-              {/* <CopyButton/> */}
               <CheatsheetButton/>
             </div>
           </div>
