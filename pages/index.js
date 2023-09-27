@@ -14,6 +14,7 @@ export default function Home() {
   }, 
   onError: (error) => {
     setLoadingState(false);
+    console.log(error)
   }});
   
   useEffect(() => {
