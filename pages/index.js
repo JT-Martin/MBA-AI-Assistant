@@ -1,7 +1,7 @@
 'use client'
 
 import Head from "next/head";
-import { useState, useMemo, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useCompletion } from 'ai/react';
 import styles from "./styles.module.scss";
 
@@ -10,18 +10,23 @@ export default function Home() {
   const [loadingState, setLoadingState] = useState(false);
   const {complete, completion, input, setInput, handleInputChange, stop} = useCompletion({api: "/api/completion", 
   onFinish: () => {
-    console.log(`Response: ${completion}`)
     setLoadingState(false);
   }, 
-  onError: () => {
+  onError: (error) => {
     setLoadingState(false);
   }});
   
   useEffect(() => {
     const responseTextarea = document.getElementById('result');
-    if (responseTextarea) {
+  if (responseTextarea) {
+    // Check if the user has scrolled up
+    const isUserScrolledUp = responseTextarea.scrollTop < responseTextarea.scrollHeight - responseTextarea.clientHeight;
+    
+    // If the user hasn't scrolled up, scroll to the bottom
+    if (!isUserScrolledUp) {
       responseTextarea.scrollTop = responseTextarea.scrollHeight;
     }
+  }
   }, [completion]); // Trigger the effect whenever 'completion' changes
 
   function handleSubmitButtonClick(event) {
@@ -58,13 +63,6 @@ export default function Home() {
     <div className={styles.all}>
       <Head>
         <title>MBA Ai Assistant</title>
-        <link rel="icon" href="/MBA PNG LOGO.png" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-        <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;700;900&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Viga&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Passion+One&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Blinker&display=swap" rel="stylesheet" />
       </Head>
       <header className={styles.header}>
         <h3>MEET YOUR ARTIFICIAL INTELLIGENCE ASSISTANT</h3>
@@ -72,9 +70,7 @@ export default function Home() {
         <ExplainerVideoButton/>
       </header>
       <main className={styles.main}>
-        <video autoPlay={true} loop={true} muted={true} playsInline={true}>
-          <source src="https://player.vimeo.com/progressive_redirect/playback/781795783/rendition/540p/file.mp4?loc=external&signature=9da22a11712585ca4080f35dea5521544ce358a0a5155ef2d11fd0a3ebf85af8" type="video/mp4"/>
-        </video>
+        <video autoPlay={true} loop={true} muted={true} playsInline={true} src="/matrix.mp4"></video>
         <div className={styles.grid}>
           <form className={styles.input}>
             <div>
@@ -126,6 +122,7 @@ export default function Home() {
                     I am not a replacement for human intelligence.`}
                     value={completion}
                 />
+                {loadingState ? (<button className={styles.stopButton} onClick={() => {stop(); setLoadingState(false)}}>Stop Generating</button>) : null}
               </div>
             </div>
             <div className={styles.buttonContainer}>

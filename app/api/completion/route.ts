@@ -1,27 +1,14 @@
-import {OpenAI} from "openai";
-import { OpenAIStream, StreamingTextResponse } from 'ai';
-
+import { OpenAI } from "openai";
+import { OpenAIStream, StreamingTextResponse } from "ai";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
 
-
-// function buildPrompt(prompt: string) {
-//   console.log(prompt.split('\n').map((message) => ({
-//     role: 'user',
-//     content: message,
-//   })));
-//   return prompt.split('\n').map((message) => ({
-//     role: 'user',
-//     content: message,
-//   }));
-// }
-
 // Define a type for message objects
 type Message = {
-  role: 'system' | 'user' | 'assistant'; // Adjust role types as needed
+  role: "system" | "user" | "assistant"; // Adjust role types as needed
   content: string;
 };
 
@@ -29,29 +16,25 @@ type Message = {
 function buildPrompt(prompt: string): Message[] {
   return [
     {
-      role: 'user',
+      role: "user",
       content: prompt.trim(),
     },
   ];
 }
 
-
 export async function POST(req: Request) {
-    const { prompt } = await req.json();
-    
-    const response = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
-      stream: true,
-      max_tokens: 1600,
-      messages: buildPrompt(prompt)
-    });
-    // Convert the response into a friendly text-stream
-    const stream = OpenAIStream(response);
-    // Respond with the stream
-    return new StreamingTextResponse(stream);
-} 
+  const { prompt } = await req.json();
 
+  const response = await openai.chat.completions.create({
+    model: "gpt-4",
+    stream: true,
+    max_tokens: 1600,
+    messages: buildPrompt(prompt),
+  });
 
-// function generatePrompt(input) {
-//   return `${input}`
-// }
+  // Create a new StreamingTextResponse using OpenAIStream
+  const streamingResponse = new StreamingTextResponse(OpenAIStream(response));
+
+  // Respond with the streamingResponse
+  return streamingResponse;
+}
