@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useCompletion } from 'ai/react';
 import styles from "./styles.module.scss";
 
+// streaming
 
 export default function Home() {
   const [loadingState, setLoadingState] = useState(false);
