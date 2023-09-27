@@ -5,6 +5,7 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
+export const runtime = 'edge';
 
 // Define a type for message objects
 type Message = {
