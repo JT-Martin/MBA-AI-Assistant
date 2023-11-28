@@ -5,6 +5,10 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
+export const config = {
+  runtime: "edge",
+};
+
 // Define a type for message objects
 type Message = {
   role: "system" | "user" | "assistant"; // Adjust role types as needed
