@@ -5,7 +5,6 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-
 // Define a type for message objects
 type Message = {
   role: "system" | "user" | "assistant"; // Adjust role types as needed
@@ -26,9 +25,8 @@ export async function POST(req: Request) {
   const { prompt } = await req.json();
 
   const response = await openai.chat.completions.create({
-    model: "gpt-4",
+    model: "gpt-4-1106-preview",
     stream: true,
-    max_tokens: 1600,
     messages: buildPrompt(prompt),
   });
 
