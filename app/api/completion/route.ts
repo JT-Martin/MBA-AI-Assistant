@@ -5,7 +5,7 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-export const runtime = 'edge';
+export const runtime = "edge";
 
 // Define a type for message objects
 type Message = {
@@ -27,7 +27,7 @@ export async function POST(req: Request) {
   const { prompt } = await req.json();
 
   const response = await openai.chat.completions.create({
-    model: "gpt-4",
+    model: "gpt-4-1106-preview",
     stream: true,
     messages: buildPrompt(prompt),
   });
